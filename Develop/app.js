@@ -5,6 +5,9 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
+//this array is for testing
+const out = [];
+
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
@@ -63,32 +66,42 @@ const questions = [
       }
     },
   },
-    {
-      name: "school",
-      type: "input",
-      message: "What School are you attending?",
-      when: function (answers) {
-        console.log(answers.role);
-        if (answers.role.includes("Intern")) {
-          return true;
-        }
-      },
+  {
+    name: "school",
+    type: "input",
+    message: "What School are you attending?",
+    when: function (answers) {
+      console.log(answers.role);
+      if (answers.role.includes("Intern")) {
+        return true;
+      }
     },
-    {
-      name: "phone",
-      type: "input",
-      message: "What is your Office Phone number?",
-      when: function (answers) {
-        console.log(answers.role);
-        if (answers.role.includes("Manager")) {
-          return true;
-        }
-      },
+  },
+  {
+    name: "phone",
+    type: "input",
+    message: "What is your Office Phone number?",
+    when: function (answers) {
+      console.log(answers.role);
+      if (answers.role.includes("Manager")) {
+        return true;
+      }
     },
+    validate: function (value) {
+      var pass = value.match(
+        /^([01]{1})?[-.\s]?\(?(\d{3})\)?[-.\s]?(\d{3})[-.\s]?(\d{4})\s?((?:#|ext\.?\s?|x\.?\s?){1}(?:\d+)?)?$/i
+      );
+      if (pass) {
+        return true;
+      }
+
+      return "Please enter a valid phone number";
+    },
+  },
   {
     type: "confirm",
-    name: "enjoy",
-    message: "I hope you found this useful (just hit enter for YES)?",
+    name: "askAgain",
+    message: "Do you want to enter another employee(just hit enter for YES)?",
     default: true,
   },
 ];
@@ -97,17 +110,23 @@ function init() {
   inquirer
     .prompt(questions)
     .then((answers) => {
-      // console.log(answers.license);
-      console.log(answers);
-
-      // console.log(fileName);
-      //   writeToFile(answers);
+      out.push(answers);
+      console.log(out);
+      console.log(html);
+      if (answers.askAgain) {
+          init();
+        } else {
+            //   render();
+      
+        //render function
+        //end the CLI and push the information to proper documents
+      }
     })
     .catch((error) => {
       if (error.isTtyError) {
-        // Prompt couldn't be rendered in the current environment
+        // console.log("couldn't be rendered in the current environment");
       } else {
-        // Something else when wrong
+        // console.log("Something else when wrong");
       }
     });
 }
