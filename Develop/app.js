@@ -12,6 +12,7 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+// const Employee = require("./lib/Employee");
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -60,7 +61,7 @@ const questions = [
     type: "input",
     message: "What is your GitHub username?",
     when: function (answers) {
-      console.log(answers.role);
+      //   console.log(answers.role);
       if (answers.role.includes("Engineer")) {
         return true;
       }
@@ -71,7 +72,7 @@ const questions = [
     type: "input",
     message: "What School are you attending?",
     when: function (answers) {
-      console.log(answers.role);
+      //   console.log(answers.role);
       if (answers.role.includes("Intern")) {
         return true;
       }
@@ -82,7 +83,7 @@ const questions = [
     type: "input",
     message: "What is your Office Phone number?",
     when: function (answers) {
-      console.log(answers.role);
+      //   console.log(answers.role);
       if (answers.role.includes("Manager")) {
         return true;
       }
@@ -111,13 +112,40 @@ function init() {
     .prompt(questions)
     .then((answers) => {
       out.push(answers);
-      console.log(out);
-      console.log(html);
-      if (answers.askAgain) {
-          init();
-        } else {
-            //   render();
+      if (answers.role.includes("Intern")) {
+        let intern = new Intern(
+          answers.name,
+          answers.id,
+          answers.email,
+          answers.school
+        );
+        console.log(intern);
+      }
+      if (answers.role.includes("Engineer")) {
+        let engineer = new Engineer(
+          answers.name,
+          answers.id,
+          answers.email,
+          answers.gitHub
+        );
+        console.log(engineer);
+      }
+      if (answers.role.includes("Manager")) {
+        let manager = new Manager(
+          answers.name,
+          answers.id,
+          answers.email,
+          answers.phone
+        );
+        console.log(manager);
+      }
+
       
+
+      if (answers.askAgain) {
+        init();
+      } else {
+        Manager.render();
         //render function
         //end the CLI and push the information to proper documents
       }
