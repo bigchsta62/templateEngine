@@ -14,6 +14,6 @@ class Manager extends Employee {
   }
 }
 
-// const Alice = new Employee(alice)
+
 
 module.exports = Manager;

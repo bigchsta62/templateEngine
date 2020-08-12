@@ -122,7 +122,7 @@ function init(employees = []) {
         );
         //console.log(intern);
         employees.push(intern);
-        console.log(employees);
+        // console.log(employees);
       }
       if (answers.role.includes("Engineer")) {
         let engineer = new Engineer(
@@ -134,7 +134,7 @@ function init(employees = []) {
         );
         //console.log(engineer);
         employees.push(engineer);
-        console.log(employees);
+        // console.log(employees);
       }
       if (answers.role.includes("Manager")) {
         let manager = new Manager(
@@ -153,8 +153,9 @@ function init(employees = []) {
         init(employees);
       } else {
         //render function
-        render(employees);
-        fs.appendFile(outputPath, employees + '\n', function (err) {
+        
+        console.log(employees);
+        fs.writeFileSync(outputPath, render(employees) + "\n", function (err) {
           if (err) {
             console.log(err);
           } else {
