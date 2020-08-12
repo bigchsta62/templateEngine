@@ -6,9 +6,10 @@ const path = require("path");
 const fs = require("fs");
 
 //this array is for testing
-const out = [];
+// const out = [];
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
+//create output directory fs
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
@@ -107,46 +108,59 @@ const questions = [
   },
 ];
 //Initializes Command Line Interface(CLI)
-function init() {
+function init(employees = []) {
   inquirer
     .prompt(questions)
     .then((answers) => {
-      out.push(answers);
       if (answers.role.includes("Intern")) {
         let intern = new Intern(
           answers.name,
           answers.id,
           answers.email,
-          answers.school
+          answers.school,
+          answers.role
         );
-        console.log(intern);
+        //console.log(intern);
+        employees.push(intern);
+        console.log(employees);
       }
       if (answers.role.includes("Engineer")) {
         let engineer = new Engineer(
           answers.name,
           answers.id,
           answers.email,
-          answers.gitHub
+          answers.gitHub,
+          answers.role
         );
-        console.log(engineer);
+        //console.log(engineer);
+        employees.push(engineer);
+        console.log(employees);
       }
       if (answers.role.includes("Manager")) {
         let manager = new Manager(
           answers.name,
           answers.id,
           answers.email,
-          answers.phone
+          answers.phone,
+          answers.role
         );
-        console.log(manager);
+        //console.log(manager);
+        employees.push(manager);
+        console.log(employees);
       }
-
-      
-
+      // fs.appendFile("manager.html", manager)
       if (answers.askAgain) {
-        init();
+        init(employees);
       } else {
-        Manager.render();
         //render function
+        render(employees);
+        fs.appendFile(outputPath, employees + '\n', function (err) {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log("Commit logged!");
+          }
+        });
         //end the CLI and push the information to proper documents
       }
     })
