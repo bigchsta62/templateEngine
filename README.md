@@ -41,7 +41,7 @@
 
 * Go to the /output folder in the directory to access the rendered html.
 
-[![demo_vid](http://img.youtube.com/vi/xG2d_UlmLMc/0.jpg)](http://www.youtube.com/watch?v=xG2d_UlmLMc "")
+[![demo_vid](http://img.youtube.com/vi/xG2d_UlmLMc/0.jpg)](http://www.youtube.com/watch?v=xG2d_UlmLMc "demo")
 
 ## License
 This application is covered under the following license(s)
