@@ -41,6 +41,8 @@
 
 * Go to the /output folder in the directory to access the rendered html.
 
+![demo vid](https://github.com/bigchsta62/templateEngine/blob/master/Develop/Assets/vid.mp4)
+
 ## License
 This application is covered under the following license(s)
 MIT License
