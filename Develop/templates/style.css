@@ -1,0 +1,60 @@
+body {
+  margin: auto;
+  background-image: url(../Assets/7.jpg);
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@font-face {
+  font-family: Anders;
+  src: url(../Assets/Anders.ttf);
+}
+
+.jumbotron {
+  background-color: rgba(6, 89, 110, 0.562);
+  border-radius: 0%;
+  padding: 0px;
+}
+
+.text-center {
+  font-family: Anders;
+  font-size: 150px;
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.card-header {
+  /* background-color: rgb(6, 89, 110); */
+  border-radius: 20px;
+  font-weight: 300;
+}
+.card-title {
+  font-family: "Abel";
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: white;
+}
+
+.card {
+  margin: 30px 20px 30px 20px;
+  min-width: 20rem;
+  max-width: 20rem;
+  background-color: rgba(6, 89, 110, 0.452);
+  border-width: 0px;
+  box-shadow: 0 0 20px 3px;
+}
+
+.list-group-item {
+  background-color: rgba(255, 255, 255, 0.664);
+  border: black;
+}
