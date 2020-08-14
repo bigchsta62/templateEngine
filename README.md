@@ -40,8 +40,9 @@
 * Type "y" and to add another employee, or "n" to exit the CLI and render the "team.html"
 
 * Go to the /output folder in the directory to access the rendered html.
-
+<figure class="video_container">
 <iframe width="1196" height="673" src="https://www.youtube.com/embed/arb2NijXmz8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+ </figure>
 
 ## License
 This application is covered under the following license(s)
